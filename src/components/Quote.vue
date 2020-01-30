@@ -28,16 +28,19 @@ blockquote {
   height: 150px;
   display: flex;
   flex-direction: column;
-}
-
-blockquote {
-  padding: 15px;
+  padding: 10px;
   background: #eee;
   border-radius: 5px;
 }
 
+blockquote:hover {
+  background-color: var(--color-green-transparent);
+  color: var(--color-white);
+}
+
 blockquote p {
   font-family: "Kristi", cursive;
+  font-size: var(--font-size-lg);
 }
 
 blockquote p::before {

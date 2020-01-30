@@ -1,15 +1,39 @@
 <template>
-  <div class="addQuote">
-    <h2>Quote</h2>
-    <textarea name="" id="" placeholder="Enter your Quote here..."> </textarea>
-    <button>Add Quote</button>
+  <div>
+    <form class="addQuote">
+      <label>Quote</label>
+      <textarea
+        type="text"
+        v-model="quote"
+        placeholder="Enter your Quote here..."
+      >
+      </textarea>
+      <div>
+        <button type="submit" @click.prevent="addQuote">Add Quote</button>
+        <!-- <input type="submit" value="Submit" class="btn submit" /> -->
+        <p>Add input for the author next time</p>
+      </div>
+    </form>
   </div>
 </template>
 
 <script>
+// import { eventBus } from "../main.js";
+// import uuid from "uuid";
+
 export default {
   name: "AddQuotes",
-  props: {}
+  data() {
+    return {
+      quote: ""
+    };
+  },
+  methods: {
+    addQuote() {
+      this.$emit("addedQuote", this.quote);
+      this.quote = "";
+    }
+  }
 };
 </script>
 
@@ -45,7 +69,8 @@ button {
   padding: 10px 25px;
   width: 25vw;
   background-color: var(--color-green-dark);
-  border: none;
+  /* border: none; */
+  border-radius: 5px;
   color: var(--color-grey);
   cursor: pointer;
   align-self: center;

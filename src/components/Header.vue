@@ -3,18 +3,18 @@
     <h2>Quotes Added</h2>
 
     <ol class="progress-bar">
-      <li class="is-active"><span>No quote yet</span></li>
+      <li class="is-active"><span>Num quote</span></li>
       <!-- class="is-complete" -->
-      <li><span>1/10</span></li>
-      <li><span>2/10</span></li>
-      <li><span>3/10</span></li>
-      <li><span>4/10</span></li>
-      <li><span>5/10</span></li>
-      <li><span>6/10</span></li>
-      <li><span>7/10</span></li>
-      <li><span>8/10</span></li>
-      <li><span>9/10</span></li>
-      <li><span>10/10</span></li>
+      <li v-bind:class="getClass(quotes, 1)"><span>1/10</span></li>
+      <li v-bind:class="getClass(quotes, 2)"><span>2/10</span></li>
+      <li v-bind:class="getClass(quotes, 3)"><span>3/10</span></li>
+      <li v-bind:class="getClass(quotes, 4)"><span>4/10</span></li>
+      <li v-bind:class="getClass(quotes, 5)"><span>5/10</span></li>
+      <li v-bind:class="getClass(quotes, 6)"><span>6/10</span></li>
+      <li v-bind:class="getClass(quotes, 7)"><span>7/10</span></li>
+      <li v-bind:class="getClass(quotes, 8)"><span>8/10</span></li>
+      <li v-bind:class="getClass(quotes, 9)"><span>9/10</span></li>
+      <li v-bind:class="getClass(quotes, 10)"><span>10/10</span></li>
     </ol>
   </section>
 </template>
@@ -22,7 +22,21 @@
 <script>
 export default {
   name: "Header",
-  props: {}
+  props: ["quotes"],
+  // data() {
+  //   return {
+  //     checked: "quotes"
+  //   };
+  // },
+  methods: {
+    getClass(quote, num) {
+      const bol = quote.length === num;
+      return {
+        "is-active": bol,
+        "is-complete": quote.length >= num
+      };
+    }
+  }
 };
 </script>
 
